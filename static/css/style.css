@@ -25,7 +25,20 @@ body {
 }
 .main-text {
     font-size: 20px;
+    flex: 1;
 }
-img {
-    position: absolute; top: 0; right: 0;
+main-content {
+    display:flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+
+}
+.img1 {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
