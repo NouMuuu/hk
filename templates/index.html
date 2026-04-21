@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <a href="{{ url_for ('register') }}" class="btn-silk">Регистрация</a>
     <div class="main-content">
     <img src="{{ url_for('static', filename='img/hk_main.png') }}" alt="main-img" width="500" class="img1">
     <h1>Hollow Knight: Silksong тактики против боссов</h1>
@@ -15,6 +16,7 @@
         Сражения с ними становятся настоящими испытаниями, где удача и точность играют ключевую роль в достижении победы.</p>
     <p class="main-text">Ниже вы можете нажать на любого босса и посмотреть туториал сражения против него</p>
     </div>
+    <a href="#down" class="scroll-btn">вниз</a>
     <h2>Боссы Фарлума</h2>
     <div class="boss_list">
         <a href="" class="boss-link">· Матерь Мхов</a>
@@ -37,7 +39,7 @@
         <p></p>
         <a href="" class="boss-link">· Фантом</a>
         <p></p>
-        <a href="" class="boss-link">· Большие ракушечные мухи</a>
+        <a href="" class="boss-link"  id="down">· Большие ракушечные мухи</a>
     </div>
 </body>
 </html>
