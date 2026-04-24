@@ -23,9 +23,32 @@ def register():
             database.add_user(email, login, hashed_pw)
             return redirect(url_for('login'))
         else:
-            return "Пароли не совпадают"
+            return
     
     return render_template("register.html")
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        login = request.form['login']
+        password = request.form['password']
+        
+        user = database.get_user_by_login(login)
+        
+        if user and check_password_hash(user['password'], password):
+            session['user_id'] = user['id']
+            session['user_login'] = user['login']
+            return redirect(url_for('index'))
+        else:
+            return
+            
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
