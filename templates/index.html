@@ -37,28 +37,18 @@
     <button class="scroll-btn-new" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">↓</button>
     
     <h2>Боссы Фарлума</h2>
-    <div class="boss_list">
-        <a href="" class="boss-link">· Матерь Мхов</a>
-        <p></p>
-        <a href="" class="boss-link">· Колокольный зверь</a>
-        <p></p>
-        <a href="" class="boss-link">· Лейс</a>
-        <p></p>
-        <a href="" class="boss-link">· Четвёртый хор</a>
-        <p></p>
-        <a href="" class="boss-link">· Дикая зверомуха</a>
-        <p></p>
-        <a href="" class="boss-link">· Топекрыл</a>
-        <p></p>
-        <a href="" class="boss-link">· Сестра Лучина</a>
-        <p></p>
-        <a href="" class="boss-link">· Тиран Череп</a>
-        <p></p>
-        <a href="https://www.igromania.ru/article/33104/kak-pobedit-vdovu-v-hollow-knight-silksong-taktika-i-sovetyi/" class="boss-link">· Вдова</a>
-        <p></p>
-        <a href="" class="boss-link">· Фантом</a>
-        <p></p>
-        <a href="" class="boss-link"  id="down">· Большие ракушечные мухи</a>
+    <div class="boss-list">
+        <a href="{{ url_for('boss_page', slug='mother-moths') }}" class="boss-link">· Матерь Мхов</a>
+        <a href="{{ url_for('boss_page', slug='bell-beast') }}" class="boss-link">· Колокольный зверь</a>
+        <a href="{{ url_for('boss_page', slug='lais') }}" class="boss-link">· Лейс</a>
+        <a href="{{ url_for('boss_page', slug='fourth-choir') }}" class="boss-link">· Четвёртый хор</a>
+        <a href="{{ url_for('boss_page', slug='wild-fluttermoth') }}" class="boss-link">· Дикая зверомуха</a>
+        <a href="{{ url_for('boss_page', slug='skypiercer') }}" class="boss-link">· Топекрыл</a>
+        <a href="{{ url_for('boss_page', slug='sister-luchina') }}" class="boss-link">· Сестра Лучина</a>
+        <a href="{{ url_for('boss_page', slug='skull-tyrant') }}" class="boss-link">· Тиран Череп</a>
+        <a href="{{ url_for('boss_page', slug='widow') }}" class="boss-link">· Вдова</a>
+        <a href="{{ url_for('boss_page', slug='phantom') }}" class="boss-link">· Фантом</a>
+        <a href="{{ url_for('boss_page', slug='giant-shell-moths') }}" class="boss-link" id="down">· Большие ракушечные мухи</a>
     </div>
 </body>
 </html>

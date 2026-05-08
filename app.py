@@ -14,15 +14,18 @@ def index():
 def register():
     if request.method == 'POST':
         try:
-            email = request.form['email']
-            login = request.form['first']
-            password = request.form['password']
-            repassword = request.form['repassword']
+            email = request.form.get('email', '').strip()
+            login = request.form.get('login', '').strip()
+            password = request.form.get('password', '')
+            repassword = request.form.get('repassword', '')
+
+            if not email or not login or not password:
+                return render_template("register.html", error="Пожалуйста, заполните все поля")
 
             if password == repassword:
                 hashed_pw = generate_password_hash(password)
                 database.add_user(email, login, hashed_pw)
-                return render_template("register.html", success="Регистрация успешна! Перейдите на вход.", error=None)
+                return redirect(url_for('login'))
             else:
                 return render_template("register.html", error="Пароли не совпадают")
         except Exception as e:
@@ -33,8 +36,8 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        login = request.form['login']
-        password = request.form['password']
+        login = request.form.get('login', '').strip()
+        password = request.form.get('password', '')
         
         user = database.get_user_by_login(login)
         
@@ -49,6 +52,26 @@ def login():
             return render_template("login.html", error="Пользователь не найден")
             
     return render_template("login.html")
+
+@app.route('/boss/<slug>')
+def boss_page(slug):
+    boss_templates = {
+        'mother-moths': 'boss_mother_moths.html',
+        'bell-beast': 'boss_bell_beast.html',
+        'lais': 'boss_lais.html',
+        'fourth-choir': 'boss_fourth_choir.html',
+        'wild-fluttermoth': 'boss_wild_fluttermoth.html',
+        'skypiercer': 'boss_skypiercer.html',
+        'sister-luchina': 'boss_sister_luchina.html',
+        'skull-tyrant': 'boss_skull_tyrant.html',
+        'widow': 'boss_widow.html',
+        'phantom': 'boss_phantom.html',
+        'giant-shell-moths': 'boss_giant_shell_moths.html'
+    }
+    template_name = boss_templates.get(slug)
+    if template_name:
+        return render_template(template_name)
+    return render_template('index.html')
 
 @app.route("/logout")
 def logout():

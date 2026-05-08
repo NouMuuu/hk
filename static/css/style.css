@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     color: white;
     background-color: rgb(20, 18, 18);
@@ -54,15 +57,20 @@ main-content {
 .account-status {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    border-radius: 8px;
+    gap: 14px;
+    padding: 14px 24px;
+    border-radius: 22px;
     font-size: 14px;
     font-weight: 500;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    background-color: #808080;
-    border: 1px solid #666;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    background: rgba(18, 18, 22, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+}
+
+.account-status:hover {
+    transform: translateY(-1px);
 }
 
 .status-dot {
@@ -71,76 +79,57 @@ main-content {
     border-radius: 50%;
 }
 
-.account-status.logged-in {
-    background-color: #808080;
-    border: 1px solid #666;
-}
-
 .account-status.logged-in .status-dot {
     background-color: #4caf50;
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
 }
 
-.account-status.logged-out {
-    background-color: #808080;
-    border: 1px solid #666;
-}
-
 .account-status.logged-out .status-dot {
-    background-color: #f44336;
-    box-shadow: 0 0 10px rgba(244, 67, 54, 0.6);
+    background-color: #ffb74d;
+    box-shadow: 0 0 10px rgba(255, 183, 77, 0.6);
 }
 
-.username {
-    color: white;
-    font-weight: 600;
-}
-
+.username,
 .status-text {
-    color: white;
+    color: #f5f5f5;
 }
 
 .logout-btn, .login-btn, .register-btn {
-    margin-left: 8px;
-    padding: 6px 12px;
-    border: 1px solid #555;
-    background-color: #666;
+    margin-left: 10px;
+    padding: 10px 18px;
+    border: none;
+    background: linear-gradient(135deg, #5a7cff 0%, #2f52ff 100%);
     color: white;
-    border-radius: 4px;
+    border-radius: 14px;
     cursor: pointer;
     text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.logout-btn {
+    margin-left: 0;
+    background: #666;
+}
+
+.logout-btn:hover,
+.login-btn:hover,
+.register-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(47, 82, 255, 0.28);
 }
 
 .logout-btn:hover {
-    background-color: #777;
-    border-color: #888;
+    background: #777;
 }
 
-.login-btn {
-    margin-left: 8px;
-    padding: 6px 12px;
-    background-color: #666;
-    border-color: #555;
-    color: white;
-}
-
-.login-btn:hover {
-    background-color: #777;
-}
-
+.login-btn,
 .register-btn {
-    margin-left: 4px;
-    padding: 6px 12px;
-    background-color: #666;
-    border-color: #555;
-    color: white;
-}
-
-.register-btn:hover {
-    background-color: #777;
+    min-width: 100px;
 }
 
 /* Scroll to bottom button */
@@ -183,4 +172,132 @@ main-content {
     100% {
         opacity: 1;
     }
+}
+
+/* Auth page styles */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: radial-gradient(circle at top, rgba(111, 144, 255, 0.12), transparent 32%),
+                radial-gradient(circle at bottom right, rgba(255, 121, 198, 0.12), transparent 28%),
+                #141212;
+}
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    background: rgba(15, 15, 15, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    border-radius: 24px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+}
+.auth-card,
+.auth-card * {
+    box-sizing: border-box;
+}
+.auth-card h1 {
+    margin: 0 0 24px;
+    font-size: 30px;
+    letter-spacing: 0.02em;
+    color: #f5f5f5;
+    text-align: center;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+label {
+    font-size: 14px;
+    color: #b8b8c2;
+    font-weight: 600;
+}
+input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: #181818;
+    color: #f3f3f3;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus {
+    border-color: rgba(100, 140, 255, 0.8);
+    box-shadow: 0 0 0 6px rgba(100, 140, 255, 0.12);
+}
+.btn-primary {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #5a7cff 0%, #2f52ff 100%);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(47, 82, 255, 0.28);
+}
+.alert {
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.alert.error {
+    background: rgba(220, 38, 38, 0.14);
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    color: #ffb3b3;
+}
+.alert.success {
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: #a7f3d0;
+}
+.link-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: #c7c7d4;
+    font-size: 14px;
+}
+.link-row a {
+    color: #97b5ff;
+    text-decoration: none;
+}
+.link-row a:hover {
+    text-decoration: underline;
+}
+.home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #1f1f1f;
+    color: #d8d8e8;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+.home-btn:hover {
+    background-color: #2b2b2b;
 }
