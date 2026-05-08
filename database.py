@@ -34,7 +34,7 @@ def get_user_by_login(login):
 
     conn.close()
     if user:
-        return{
+        return {
             "id": user[0],
             "email": user[1],
             "login": user[2],

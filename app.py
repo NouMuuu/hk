@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 import database
-from werkzeug.utils import generate_password_hash,  check_password_hash
+from werkzeug.security import generate_password_hash,  check_password_hash
 app = Flask(__name__)
 app.secret_key = "fdsdfefwfsd"
 
@@ -13,17 +13,20 @@ def index():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        email = request.form['email']
-        login = request.form['first']
-        password = request.form['password']
-        repassword = request.form['repassword']
+        try:
+            email = request.form['email']
+            login = request.form['first']
+            password = request.form['password']
+            repassword = request.form['repassword']
 
-        if password == repassword:
-            hashed_pw = generate_password_hash(password)
-            database.add_user(email, login, hashed_pw)
-            return redirect(url_for('login'))
-        else:
-            return
+            if password == repassword:
+                hashed_pw = generate_password_hash(password)
+                database.add_user(email, login, hashed_pw)
+                return render_template("register.html", success="Регистрация успешна! Перейдите на вход.", error=None)
+            else:
+                return render_template("register.html", error="Пароли не совпадают")
+        except Exception as e:
+            return render_template("register.html", error=f"Ошибка: {str(e)}")
     
     return render_template("register.html")
 
@@ -35,12 +38,15 @@ def login():
         
         user = database.get_user_by_login(login)
         
-        if user and check_password_hash(user['password'], password):
-            session['user_id'] = user['id']
-            session['user_login'] = user['login']
-            return redirect(url_for('index'))
+        if user:
+            if check_password_hash(user['password'], password):
+                session['user_id'] = user['id']
+                session['user_login'] = user['login']
+                return redirect(url_for('index'))
+            else:
+                return render_template("login.html", error="Неверный пароль")
         else:
-            return
+            return render_template("login.html", error="Пользователь не найден")
             
     return render_template("login.html")
 

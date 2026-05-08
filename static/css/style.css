@@ -42,3 +42,145 @@ main-content {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
+
+/* Account Status Indicator */
+.account-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.account-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    background-color: #808080;
+    border: 1px solid #666;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.account-status.logged-in {
+    background-color: #808080;
+    border: 1px solid #666;
+}
+
+.account-status.logged-in .status-dot {
+    background-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.6);
+}
+
+.account-status.logged-out {
+    background-color: #808080;
+    border: 1px solid #666;
+}
+
+.account-status.logged-out .status-dot {
+    background-color: #f44336;
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.6);
+}
+
+.username {
+    color: white;
+    font-weight: 600;
+}
+
+.status-text {
+    color: white;
+}
+
+.logout-btn, .login-btn, .register-btn {
+    margin-left: 8px;
+    padding: 6px 12px;
+    border: 1px solid #555;
+    background-color: #666;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 12px;
+}
+
+.logout-btn:hover {
+    background-color: #777;
+    border-color: #888;
+}
+
+.login-btn {
+    margin-left: 8px;
+    padding: 6px 12px;
+    background-color: #666;
+    border-color: #555;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #777;
+}
+
+.register-btn {
+    margin-left: 4px;
+    padding: 6px 12px;
+    background-color: #666;
+    border-color: #555;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #777;
+}
+
+/* Scroll to bottom button */
+.scroll-btn-new {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    font-size: 24px;
+    color: #333;
+}
+
+.scroll-btn-new:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-btn-new:active {
+    transform: translateY(-1px);
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -7,7 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <a href="{{ url_for ('register') }}" class="btn-silk">Регистрация</a>
+    <!-- Account Status Indicator -->
+    <div class="account-indicator">
+        {% if session.get('user_login') %}
+            <div class="account-status logged-in">
+                <span class="status-dot"></span>
+                <span class="username">{{ session.get('user_login') }}</span>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Выход</a>
+            </div>
+        {% else %}
+            <div class="account-status logged-out">
+                <span class="status-dot"></span>
+                <span class="status-text">Не авторизован</span>
+                <a href="{{ url_for('login') }}" class="login-btn">Вход</a>
+                <a href="{{ url_for('register') }}" class="register-btn">Регистрация</a>
+            </div>
+        {% endif %}
+    </div>
+
     <div class="main-content">
     <img src="{{ url_for('static', filename='img/hk_main.png') }}" alt="main-img" width="500" class="img1">
     <h1>Hollow Knight: Silksong тактики против боссов</h1>
@@ -16,7 +33,9 @@
         Сражения с ними становятся настоящими испытаниями, где удача и точность играют ключевую роль в достижении победы.</p>
     <p class="main-text">Ниже вы можете нажать на любого босса и посмотреть туториал сражения против него</p>
     </div>
-    <a href="#down" class="scroll-btn">вниз</a>
+    
+    <button class="scroll-btn-new" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">↓</button>
+    
     <h2>Боссы Фарлума</h2>
     <div class="boss_list">
         <a href="" class="boss-link">· Матерь Мхов</a>
