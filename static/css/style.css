@@ -199,6 +199,72 @@ main-content {
 .auth-card * {
     box-sizing: border-box;
 }
+
+/* Boss page styles */
+.content-card {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(15, 15, 15, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.content-card h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.content-card h2 {
+    color: #ccc;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.boss-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.attacks-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.attacks-list li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.strategy {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.strategy p {
+    margin-bottom: 15px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #5a7cff 0%, #2f52ff 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #2f52ff 0%, #1a3dff 100%);
+}
 .auth-card h1 {
     margin: 0 0 24px;
     font-size: 30px;
